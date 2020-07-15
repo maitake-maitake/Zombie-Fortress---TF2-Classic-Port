@@ -5,6 +5,9 @@ The original plugin can be found here:
 https://forums.alliedmods.net/showthread.php?t=131282
 Please refer to that thread for more info and for server/console commands.
 
+SERVER CRASHING BUG: If a player spawns with the Scorching perk, the server will crash.
+Disable the Scorching perk if running Perks. To do this, type "sm_zf_perk_disable scorching"
+
 This simply solves errors in the original code and fits it for TF2 classic. Any further work or new additions will probably need to be done by a more knowledgeable coder.
 
 It is recommended to use a map created for this mode. These maps usually start with zf (i.e zf_asylum_b3).
