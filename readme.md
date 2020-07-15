@@ -27,4 +27,4 @@ In your server, drop zombiefortress_perk.smx or zombiefortress_vanilla.smx into 
 Known Issues:
 4 Team maps will most likely not work but are untested.
 VIP maps are incompatible but it may be possible to code this in.
-The Civilian class is broken. Players will not be able to move correctly. Please set "tf2c_allow_special_classes 0".
+The Civilian class is broken and will not be able to move correctly. Please set "tf2c_allow_special_classes 0".
