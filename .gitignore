@@ -1,0 +1,10 @@
+*.dat
+*.exe
+[Ii]nclude/
+[Cc]compiled/
+[Dd]esktop.ini
+[Tt]humbs.db
+!zf_perk.inc
+!zf_util_base.inc
+!zf_util_fx.inc
+!zf_util_pref.inc
