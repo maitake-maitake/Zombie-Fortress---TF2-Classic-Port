@@ -690,7 +690,7 @@ stock Float:clientBaseSpeed(client)
     case TFClass_Scout:    return 350.0;  // Default 400.0 <Slowed>
     case TFClass_Spy:      return 280.0;  // Default 300.0 <Slowed>
     case TFClass_Heavy:    return 230.0;  // Default 230.0
-    case TFClass_Civilian:   return 280.0;  // Default 280.0
+    case TFClass_Civilian:   return 250.0;  // Default 280.0 <Slowed>
   }
   return 0.0;
 }
