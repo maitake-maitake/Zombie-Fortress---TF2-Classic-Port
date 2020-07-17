@@ -429,9 +429,10 @@ public Action:hook_JoinClass(client, const String:command[], argc)
     // issue when the player spawns.
     if(!(StrEqual(cmd1, "scout", false) ||
          StrEqual(cmd1, "spy", false)  ||
-         StrEqual(cmd1, "heavyweapons", false)))
+         StrEqual(cmd1, "heavyweapons") ||
+         StrEqual(cmd1, "civilian", false)))
     {
-      PrintToChat(client, "\x05[ZF]\x01 Valid zombies: Scout, Heavy, Spy.");
+      PrintToChat(client, "\x05[ZF]\x01 Valid zombies: Scout, Heavy, Spy, Civilian.");
     }
   }
 
@@ -1174,6 +1175,7 @@ handle_zombieAbilities()
           case TFClass_Scout: bonus = 2;
           case TFClass_Heavy: bonus = 4;
           case TFClass_Spy:   bonus = 2;
+          case TFClass_Civilian: bonus = 2;
         }
         curH += bonus;
         curH = min(curH, maxH);
@@ -1186,6 +1188,7 @@ handle_zombieAbilities()
           case TFClass_Scout: bonus = -3;
           case TFClass_Heavy: bonus = -7;
           case TFClass_Spy:   bonus = -3;
+          case TFClass_Civilian:   bonus = -3;
         }
         curH += bonus;
         curH = max(curH, maxH);
@@ -1496,7 +1499,7 @@ public panel_PrintHelpOverview(client)
 
   SetPanelTitle(panel, "ZF Overview");
   DrawPanelText(panel, "----------------------------------------");
-  DrawPanelText(panel, "Survivors must survive the endless hoarde.");
+  DrawPanelText(panel, "Survivors must survive the endless horde.");
   DrawPanelText(panel, "When a survivor dies, they become a zombie.");
   DrawPanelText(panel, "----------------------------------------");
   DrawPanelItem(panel, "Return to Help Menu");
@@ -1535,9 +1538,9 @@ public panel_PrintHelpTeam(client, team)
   {
     SetPanelTitle(panel, "ZF Zombie Team");
     DrawPanelText(panel, "----------------------------------------");
-    DrawPanelText(panel, "Zombies consist of scouts, heavies, and");
-    DrawPanelText(panel, "spies. They receive a small health regen");
-    DrawPanelText(panel, "bonus.");
+    DrawPanelText(panel, "Zombies consist of scouts, heavies, spies");
+    DrawPanelText(panel, "and civilians. They receive a small");
+    DrawPanelText(panel, "health regen bonus.");
     DrawPanelText(panel, "----------------------------------------");
   }
   DrawPanelItem(panel, "Return to Help Menu");
@@ -1602,6 +1605,7 @@ public panel_PrintHelpZomClass(client)
   DrawPanelItem(panel, "Scout");
   DrawPanelItem(panel, "Heavy");
   DrawPanelItem(panel, "Spy");
+  DrawPanelItem(panel, "Civilian");
   DrawPanelItem(panel, "Close Menu");
   SendPanelToClient(panel, client, panel_HandleHelpZomClass, 30);
   CloseHandle(panel);
@@ -1616,6 +1620,7 @@ public panel_HandleHelpZomClass(Handle:menu, MenuAction:action, param1, param2)
       case 1: panel_PrintClass(param1, TFClass_Scout);
       case 2: panel_PrintClass(param1, TFClass_Heavy);
       case 3: panel_PrintClass(param1, TFClass_Spy);
+      case 4: panel_PrintClass(param1, TFClass_Civilian);
       default: return;
     }
   }
@@ -1697,6 +1702,13 @@ public panel_PrintClass(client, TFClassType:class)
       DrawPanelText(panel, "----------------------------------------");
       DrawPanelText(panel, "Knife and invis watch only.");
       DrawPanelText(panel, "Speed reduced to 280 (from 300).");
+      DrawPanelText(panel, "----------------------------------------");
+    }
+    case TFClass_Civilian:
+    {
+      SetPanelTitle(panel, "Civilian [Zombie]");
+      DrawPanelText(panel, "----------------------------------------");
+      DrawPanelText(panel, "No changes.");
       DrawPanelText(panel, "----------------------------------------");
     }
     default:
