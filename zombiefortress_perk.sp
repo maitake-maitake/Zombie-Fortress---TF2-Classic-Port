@@ -429,7 +429,7 @@ public Action:hook_JoinClass(client, const String:command[], argc)
     // issue when the player spawns.
     if(!(StrEqual(cmd1, "scout", false) ||
          StrEqual(cmd1, "spy", false)  ||
-         StrEqual(cmd1, "heavyweapons") ||
+         StrEqual(cmd1, "heavyweapons", false) ||
          StrEqual(cmd1, "civilian", false)))
     {
       PrintToChat(client, "\x05[ZF]\x01 Valid zombies: Scout, Heavy, Spy, Civilian.");
