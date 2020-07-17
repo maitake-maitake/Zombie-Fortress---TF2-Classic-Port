@@ -117,6 +117,9 @@ static ZF_WEAPON_DATA[MAX_ZF_WEAPONS] = {0, ...};
 #define ZFWEAP_DESTROYPDA          26
 #define ZFWEAP_WRENCH_UPGRADE      197
 
+// Civilian
+#define ZFWEAP_UMBRELLA     32
+
 //
 // Offsets
 //
@@ -132,14 +135,13 @@ static oNextSecAttack;
 //
 // ZF Class Objects
 //
-static const TFClassType:ZF_SURVIVORS[7] = {
+static const TFClassType:ZF_SURVIVORS[6] = {
   TFClass_Sniper, TFClass_Soldier, TFClass_DemoMan,
-  TFClass_Medic,  TFClass_Pyro,    TFClass_Engineer,
-  TFClass_Civilian};
-static const TFClassType:ZF_ZOMBIES[3] = {
-  TFClass_Scout,  TFClass_Heavy,   TFClass_Spy};
-static const ZF_VALIDSURVIVOR[11] = {0,0,1,1,1,1,0,1,0,1,1};
-static const ZF_VALIDZOMBIE[11]   = {0,1,0,0,0,0,1,0,1,0,0};
+  TFClass_Medic,  TFClass_Pyro,    TFClass_Engineer};
+static const TFClassType:ZF_ZOMBIES[4] = {
+  TFClass_Scout,  TFClass_Heavy,  TFClass_Spy,  TFClass_Civilian};
+static const ZF_VALIDSURVIVOR[11] = {0,0,1,1,1,1,0,1,0,1,0};
+static const ZF_VALIDZOMBIE[11]   = {0,1,0,0,0,0,1,0,1,0,1};
 
 //
 // ZF Team / Round State
@@ -241,6 +243,10 @@ utilBaseInit()
   ZF_WEAPON_DATA[ZFWEAP_WRENCH]              = F_NOSTRIP;
   ZF_WEAPON_DATA[ZFWEAP_BUILDPDA]            = 0;
   ZF_WEAPON_DATA[ZFWEAP_DESTROYPDA]          = 0;
+
+  // Civilian
+  ZF_WEAPON_DATA[ZFWEAP_UMBRELLA]   = F_NOSTRIP;
+
 }
 
 ////////////////////////////////////////////////////////////
@@ -493,7 +499,8 @@ stock stripWeapons(client, bool:keepPri = false)
   //
   // Switch to melee slot.
   //
-  switchToSlot(client, 2);
+  new weapon = GetPlayerWeaponSlot(client, 2);
+  SetEntPropEnt(client, Prop_Send, "m_hActiveWeapon", weapon); 
 }
 
 stock stripWeaponSlot(client, slot)

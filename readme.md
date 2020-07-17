@@ -14,6 +14,8 @@ It is recommended to use a map created for this mode. These maps usually start w
 I have compiled a list of maps for this mode that I have tested for compatibility with TF2 Classic:
 https://pastebin.com/raw/vn6zBUk5
 
+The Civilian class can be played as a zombie. Please set "tf2c_allow_special_classes 1" if you want this to be possible.
+
 Requirements:
 
 Use of this plugin in a server will require SourceMod:
@@ -30,4 +32,3 @@ In your server, drop zombiefortress_perk.smx or zombiefortress_vanilla.smx into 
 Known Issues:
 4 Team maps will most likely not work but are untested.
 VIP maps are incompatible but it may be possible to code this in.
-The Civilian class is broken and will not be able to move correctly. Please set "tf2c_allow_special_classes 0".
