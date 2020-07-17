@@ -1708,7 +1708,7 @@ public panel_PrintClass(client, TFClassType:class)
     {
       SetPanelTitle(panel, "Civilian [Zombie]");
       DrawPanelText(panel, "----------------------------------------");
-      DrawPanelText(panel, "No changes.");
+      DrawPanelText(panel, "Speed reduced to 250 (from 280).");
       DrawPanelText(panel, "----------------------------------------");
     }
     default:
